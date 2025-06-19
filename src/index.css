@@ -1,0 +1,82 @@
+@import "tailwindcss";
+/* Add these to your index.css or App.css */
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+/* @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap'); */
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Animation for glow effect */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(212, 160, 23, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(212, 160, 23, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(212, 160, 23, 0.5);
+  }
+}
+
+/* Custom shadow */
+.shadow-luxury {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2),
+              0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+/* In your CSS file */
+.font-tangerine {
+  font-family: 'Tangerine', cursive;
+}
+
+/* Glitter background effect */
+@layer utilities {
+  .glitter-bg::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%),
+                url("https://www.transparenttextures.com/patterns/golden-glow.png");
+    background-size: 300% 300%;
+    animation: glitter 8s linear infinite;
+    opacity: 0.25;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  @keyframes glitter {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+
+  .luxe-title {
+    text-shadow: 0 0 6px rgba(212, 160, 23, 0.6), 0 0 12px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Add to your CSS file for a vertical timeline effect */
+.milestone-timeline {
+  position: relative;
+}
+.milestone-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #d1e7dd;
+  z-index: 0;
+}
