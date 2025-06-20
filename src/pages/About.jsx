@@ -1,83 +1,196 @@
+"use client";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { FaAward, FaHeart, FaUsers, FaCalendarAlt } from "react-icons/fa";
+import { useInView } from "react-intersection-observer";
+import { useState, useEffect } from "react";
+
+// Color palette aligned with Home.jsx
+const colors = {
+  cream: "#F5F5DC",
+  gold: "#D4A017",
+  royalGreen: "#1B4D3E",
+  black: "#1A1A1A",
+  lightGold: "rgba(212, 160, 23, 0.2)",
+};
+
+// AnimatedCounter Component (from Home.jsx)
+function AnimatedCounter({ target, duration = 1500 }) {
+  const [count, setCount] = useState(0);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+
+  useEffect(() => {
+    if (!inView) return;
+
+    const end = parseInt(target.replace(/[^0-9]/g, ""), 10);
+    if (count === end) return;
+
+    let current = 0;
+    const timer = setInterval(() => {
+      if (current >= end) {
+        setCount(end);
+        clearInterval(timer);
+        return;
+      }
+      const remaining = end - current;
+      const increment = Math.min(
+        remaining,
+        Math.max(50, Math.floor(remaining * (0.1 + Math.random() * 0.4)))
+      );
+      current += increment;
+      setCount(Math.min(current, end));
+    }, duration / 10);
+
+    return () => clearInterval(timer);
+  }, [inView, target, duration, count]);
+
+  return <span ref={ref}>{target.replace(/[0-9]+/, count)}</span>;
+}
+
+// Why Silver Petals items
+const whySilverItems = [
+  {
+    title: "Premier Venues",
+    desc: "Sophisticated spaces designed to bring your vision to life with customizable elegance.",
+    icon: "🏛️",
+    img: "/venue1.jpg",
+  },
+  {
+    title: "Culinary Excellence",
+    desc: "Exquisite menus crafted by world-class chefs, tailored to your preferences.",
+    icon: "🍽️",
+    img: "/catering1.jpg",
+  },
+  {
+    title: "Seamless Planning",
+    desc: "Comprehensive event management with meticulous attention to every detail.",
+    icon: "📋",
+    img: "/planning1.jpg",
+  },
+  {
+    title: "Bespoke Décor",
+    desc: "Customized designs that transform your event into a stunning masterpiece.",
+    icon: "✨",
+    img: "/decor1.jpg",
+  },
+  {
+    title: "Exceptional Service",
+    desc: "Dedicated professionals ensuring a flawless and memorable experience.",
+    icon: "🤝",
+    img: "/service1.jpg",
+  },
+];
+
+// Stats data
+const stats = [
+  { value: "15+", label: "Years Experience", icon: <FaAward className="text-3xl" /> },
+  { value: "500+", label: "Events Hosted", icon: <FaCalendarAlt className="text-3xl" /> },
+  { value: "10000+", label: "Happy Guests", icon: <FaUsers className="text-3xl" /> },
+  { value: "100%", label: "Satisfaction", icon: <FaHeart className="text-3xl" /> },
+];
+
+// Team members data
+const teamMembers = [
+  {
+    name: "Eleanor Windsor",
+    role: "Founder & CEO",
+    desc: "Visionary leader with a passion for creating unforgettable events.",
+    img: "/team1.jpg",
+  },
+  {
+    name: "James Carter",
+    role: "Event Director",
+    desc: "Master planner ensuring every detail is executed flawlessly.",
+    img: "/team2.jpg",
+  },
+  {
+    name: "Sophie Laurent",
+    role: "Head Chef",
+    desc: "Culinary artist crafting exquisite menus tailored to your taste.",
+    img: "/team3.jpg",
+  },
+  {
+    name: "Amelia Rose",
+    role: "Design Lead",
+    desc: "Creative genius transforming venues into stunning masterpieces.",
+    img: "/team4.jpg",
+  },
+];
 
 export default function About() {
-
-  
-
-  // Enhanced color palette
-  const colors = {
-    darkNavy: "#0A1428",     // Darker background for better contrast
-    navy: "#1A2A44",         // Primary dark blue
-    lightNavy: "#2A3F6B",    // Lighter accents
-    gold: "#D4A017",         // Primary gold
-    lightGold: "#E6B422",    // Brighter gold accents
-    cream: "#F8F4E8",        // Warmer cream for text
-    champagne: "#F5E6C8"     // Soft highlight color
-  };
-
-  const stats = [
-    { value: "15+", label: "Years Experience", icon: <FaAward className="text-3xl" /> },
-    { value: "500+", label: "Events Hosted", icon: <FaCalendarAlt className="text-3xl" /> },
-    { value: "10K+", label: "Happy Guests", icon: <FaUsers className="text-3xl" /> },
-    { value: "100%", label: "Satisfaction", icon: <FaHeart className="text-3xl" /> }
-  ];
-
-  const team = [
-    { name: "Sarah Johnson", role: "Event Director", img: "person1.jpg" },
-    { name: "Michael Chen", role: "Head Chef", img: "person2.jpg" },
-    { name: "Elena Rodriguez", role: "Design Specialist", img: "person3.jpg" },
-    { name: "David Wilson", role: "Operations Manager", img: "person1.jpg" }
-  ];
-
   return (
-    <div className="relative overflow-hidden" style={{ 
-      background: `linear-gradient(135deg, ${colors.darkNavy} 0%, ${colors.navy} 100%)`,
-      color: colors.cream
-    }}>
-
-
-
+    <div
+      className="relative overflow-hidden"
+      style={{
+        background: `linear-gradient(135deg, ${colors.cream} 0%, ${colors.lightGold} 100%)`,
+        color: colors.black,
+        fontFamily: "'Roboto', sans-serif",
+      }}
+    >
       {/* Decorative Elements */}
-      <div className="absolute inset-0 opacity-20" style={{
-        backgroundImage: "url('parties.jpg')",
-        backgroundSize: "4000px",
-        backgroundRepeat: "repeat"
-      }}></div>
+      <div className="absolute top-0 left-0 w-full h-full opacity-10">
+        <div className="absolute top-10 left-10 w-40 h-40">
+          <div
+            className="w-full h-full bg-repeat"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20L0 20z' fill='${encodeURIComponent(
+                colors.royalGreen
+              )}' fill-opacity='0.2'/%3E%3C/svg%3E")`,
+            }}
+          />
+        </div>
+        <div className="absolute bottom-20 right-10 w-32 h-32 rotate-45">
+          <div
+            className="w-full h-full bg-repeat"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20L0 20z' fill='${encodeURIComponent(
+                colors.royalGreen
+              )}' fill-opacity='0.2'/%3E%3C/svg%3E")`,
+            }}
+          />
+        </div>
+      </div>
 
       {/* Main Content */}
-      <section className="relative max-w-7xl mx-auto px-6 py-24 min-h-screen flex flex-col justify-center">
+      <section className="relative max-w-7xl mx-auto px-6 py-24 min-h-screen">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: false, margin: "-100px" }}
+          viewport={{ once: true }}
           className="text-center mb-20"
         >
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold mb-6"
-            style={{ 
-              color: colors.gold,
-              fontFamily: "'Tangerine', cursive",
-              textShadow: '0 2px 10px rgba(212, 160, 23, 0.3)'
+            className="text-4xl md:text-6xl font-bold mb-6 relative inline-block"
+            style={{
+              color: colors.royalGreen,
+              fontFamily: "'Cinzel', serif",
             }}
           >
             Our Legacy of Excellence
+            <motion.div
+              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-current mt-4"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            />
           </motion.h2>
-          
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl max-w-4xl mx-auto"
-            style={{ 
-              color: colors.champagne,
-              lineHeight: '1.6'
+            style={{
+              color: colors.black,
+              lineHeight: "1.6",
             }}
           >
             Where timeless elegance meets contemporary luxury
@@ -85,90 +198,83 @@ export default function About() {
         </motion.div>
 
         {/* Story Section */}
-        <motion.div
-          className="grid md:grid-cols-2 gap-16 items-center mb-28"
-        >
+        <motion.div className="grid md:grid-cols-2 gap-12 sm:gap-16 items-center mb-28">
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            viewport={{ margin: "-100px" }}
+            viewport={{ once: true }}
             className="relative"
           >
             <motion.img
-              src="team1.jpg"
-              alt="Luxury banquet hall"
+              src="/venue1.jpg"
+              alt="Silver Petals banquet hall"
               className="rounded-xl shadow-2xl w-full"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
               style={{
-                border: `2px solid ${colors.gold}30`,
-                boxShadow: '0 20px 40px rgba(0,0,0,0.3)'
+                border: `2px solid ${colors.gold}`,
+                boxShadow: `0 20px 40px ${colors.lightGold}`,
               }}
             />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute -bottom-6 -right-6 p-6 rounded-xl shadow-lg"
-              style={{ 
+              className="absolute -bottom-6 -right-6 p-4 rounded-xl shadow-lg"
+              style={{
                 background: colors.gold,
-                color: colors.darkNavy,
+                color: colors.black,
                 fontFamily: "'Cinzel', serif",
-                border: `1px solid ${colors.lightGold}`
+                border: `1px solid ${colors.royalGreen}`,
               }}
             >
-              <p className="text-2xl font-bold">2008</p>
+              <p className="text-xl font-bold">2008</p>
               <p className="text-sm">Established</p>
             </motion.div>
           </motion.div>
-
           <div>
             <motion.h3
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="text-3xl font-bold mb-6"
-              style={{ 
-                color: colors.lightGold,
-                fontFamily: "'Cinzel', serif"
+              style={{
+                color: colors.royalGreen,
+                fontFamily: "'Cinzel', serif",
               }}
             >
               Our Heritage
             </motion.h3>
-            
             <motion.div
               className="space-y-5 text-lg"
-              style={{ color: colors.cream }}
+              style={{ color: colors.black }}
             >
               <motion.p
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                Founded in <span style={{ color: colors.lightGold }}>2008</span> by hospitality visionary 
-                <span style={{ color: colors.lightGold }}> Eleanor Windsor</span>, our venue began as 
-                a passion project to redefine event excellence.
+                Founded in <span style={{ color: colors.gold }}>2008</span> by hospitality visionary{" "}
+                <span style={{ color: colors.gold }}>Eleanor Windsor</span>, Silver Petals began as a
+                passion project to redefine event excellence.
               </motion.p>
-              
               <motion.p
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                Today, our <span style={{ color: colors.lightGold }}>20,000 sq. ft.</span> space 
-                combines historic charm with modern amenities, hosting everything from 
-                royal weddings to international summits.
+                Our <span style={{ color: colors.gold }}>20,000 sq. ft.</span> venue combines historic
+                charm with modern amenities, hosting everything from royal weddings to international
+                summits.
               </motion.p>
-              
               <motion.p
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                What truly sets us apart is our <span style={{ color: colors.lightGold }}>bespoke approach</span> - 
-                each event is uniquely crafted by our team of master planners, 
-                Michelin-trained chefs, and design virtuosos.
+                Our <span style={{ color: colors.gold }}>bespoke approach</span> sets us apart, with
+                each event crafted by master planners, Michelin-trained chefs, and design virtuosos.
               </motion.p>
             </motion.div>
           </div>
@@ -179,8 +285,8 @@ export default function About() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: false, margin: "-100px" }}
-          className="grid md:grid-cols-4 gap-6 mb-28"
+          viewport={{ once: true }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-28"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -188,177 +294,195 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ 
+              whileHover={{
                 y: -10,
-                backgroundColor: colors.lightNavy,
-                boxShadow: `0 10px 30px ${colors.gold}20`
+                boxShadow: `0 10px 30px ${colors.lightGold}`,
               }}
-              className="p-8 rounded-xl text-center transition-all"
+              className="p-6 sm:p-8 rounded-xl text-center transition-all"
               style={{
-                background: colors.navy,
-                border: `1px solid ${colors.gold}20`,
-                color: colors.cream
+                background: colors.cream,
+                border: `1px solid ${colors.gold}`,
+                color: colors.black,
               }}
+              role="region"
+              aria-label={stat.label}
             >
-              <div className="mb-4 flex justify-center" style={{ color: colors.lightGold }}>
+              <motion.div
+                className="mb-4 flex justify-center"
+                style={{ color: colors.royalGreen }}
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: 0.3 }}
+              >
                 {stat.icon}
-              </div>
-              <p 
-                className="text-4xl font-bold mb-2" 
-                style={{ 
+              </motion.div>
+              <p
+                className="text-3xl sm:text-4xl font-bold mb-2"
+                style={{
                   color: colors.gold,
-                  textShadow: '0 2px 5px rgba(212, 160, 23, 0.3)'
                 }}
               >
-                {stat.value}
+                <AnimatedCounter target={stat.value} />
               </p>
-              <p className="text-lg">{stat.label}</p>
+              <p className="text-base sm:text-lg">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Team Section */}
-        <div className="mb-28">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-28"
+        >
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-bold mb-12 text-center"
-            style={{ 
-              color: colors.lightGold,
-              fontFamily: "'Cinzel', serif"
+            className="text-3xl sm:text-4xl font-bold mb-12 text-center relative"
+            style={{
+              color: colors.royalGreen,
+              fontFamily: "'Cinzel', serif",
             }}
           >
-            The Architects of Celebration
+            Meet Our Team
+            <motion.div
+              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-current mt-4"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            />
           </motion.h3>
-          
-          <div className="grid md:grid-cols-4 gap-8">
-            {team.map((member, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+            {teamMembers.map((member, index) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="text-center"
+                whileHover={{
+                  y: -10,
+                  boxShadow: `0 10px 30px ${colors.lightGold}`,
+                }}
+                className="rounded-xl overflow-hidden bg-white border"
+                style={{
+                  borderColor: colors.gold,
+                }}
+                role="region"
+                aria-label={`Team member ${member.name}`}
               >
-                <motion.div 
-                  className="relative mb-6 overflow-hidden rounded-lg aspect-square"
-                  style={{
-                    border: `1px solid ${colors.gold}30`,
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
-                  }}
-                >
-                  <motion.img
-                    src={member.img}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
+                <div className="relative h-64">
+                  <div
+                    className="w-full h-full bg-cover bg-center"
+                    style={{
+                      backgroundImage: `url('${member.img}')`,
+                    }}
                   />
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6"
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: `linear-gradient(to top, ${colors.black}50, transparent)`,
+                    }}
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <h4
+                    className="text-xl font-bold mb-2"
+                    style={{
+                      color: colors.royalGreen,
+                      fontFamily: "'Cinzel', serif",
+                    }}
                   >
-                    <div>
-                      <p 
-                        className="text-gold font-bold text-lg"
-                        style={{ textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}
-                      >
-                        {member.name}
-                      </p>
-                      <p 
-                        className="text-champagne text-sm"
-                        style={{ textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}
-                      >
-                        {member.role}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-                <h4 
-                  className="text-xl font-bold mb-1"
-                  style={{ color: colors.cream }}
-                >
-                  {member.name}
-                </h4>
-                <p 
-                  className="text-gold"
-                  style={{ opacity: 0.9 }}
-                >
-                  {member.role}
-                </p>
+                    {member.name}
+                  </h4>
+                  <p className="text-base font-medium mb-2" style={{ color: colors.gold }}>
+                    {member.role}
+                  </p>
+                  <p className="text-sm" style={{ color: colors.black }}>
+                    {member.desc}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Values Section */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: false, margin: "-100px" }}
-          className="rounded-xl p-12"
+          viewport={{ once: true }}
+          className="rounded-xl p-8 sm:p-12"
           style={{
-            background: `linear-gradient(135deg, ${colors.navy} 0%, ${colors.darkNavy} 100%)`,
-            border: `1px solid ${colors.gold}20`,
-            boxShadow: '0 20px 50px rgba(0,0,0,0.3)'
+            background: colors.cream,
+            border: `1px solid ${colors.gold}`,
+            boxShadow: `0 20px 50px ${colors.lightGold}`,
           }}
         >
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-bold mb-8 text-center"
-            style={{ 
-              color: colors.lightGold,
-              fontFamily: "'Cinzel', serif"
+            className="text-3xl sm:text-4xl font-bold mb-8 text-center relative"
+            style={{
+              color: colors.royalGreen,
+              fontFamily: "'Cinzel', serif",
             }}
           >
             Pillars of Distinction
+            <motion.div
+              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-current mt-4"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            />
           </motion.h3>
-          
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             {[
-              { 
-                title: "Excellence", 
+              {
+                title: "Excellence",
                 desc: "We pursue perfection in every detail, from cuisine to decor, ensuring flawless execution.",
-                icon: "✨"
+                icon: "✨",
               },
-              { 
-                title: "Hospitality", 
+              {
+                title: "Hospitality",
                 desc: "Warm, personalized service that makes every guest feel like royalty.",
-                icon: "👑"
+                icon: "👑",
               },
-              { 
-                title: "Innovation", 
+              {
+                title: "Innovation",
                 desc: "Continually evolving to bring fresh, creative concepts to life.",
-                icon: "💡"
-              }
+                icon: "💡",
+              },
             ].map((value, index) => (
               <motion.div
                 key={value.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.03,
-                  borderColor: colors.gold
+                  borderColor: colors.gold,
                 }}
-                className="rounded-lg p-8 transition-all"
-                style={{ 
-                  background: colors.darkNavy,
-                  border: `1px solid ${colors.gold}15`,
-                  color: colors.cream
+                className="rounded-lg p-6 sm:p-8 transition-all"
+                style={{
+                  background: colors.cream,
+                  border: `1px solid ${colors.royalGreen}20`,
+                  color: colors.black,
                 }}
               >
-                <div 
+                <div
                   className="text-4xl mb-4"
-                  style={{ color: colors.lightGold }}
+                  style={{ color: colors.royalGreen }}
                 >
                   {value.icon}
                 </div>
-                <h4 
+                <h4
                   className="text-xl font-bold mb-3"
                   style={{ color: colors.gold }}
                 >
@@ -370,6 +494,197 @@ export default function About() {
           </div>
         </motion.div>
       </section>
+      <section
+              className="relative text-white py-24 w-full overflow-hidden"
+              id="why-silver-petals"
+             
+            >
+              <div className="absolute top-0 left-0 w-full h-full opacity-10">
+                <div className="absolute top-10 left-10 w-40 h-40">
+                  <div
+                    className="w-full h-full bg-repeat"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20L0 20z' fill='${encodeURIComponent(
+                        colors.royalGreen
+                      )}' fill-opacity='0.2'/%3E%3C/svg%3E")`,
+                    }}
+                  />
+                </div>
+                <div className="absolute bottom-20 right-10 w-32 h-32 rotate-45">
+                  <div
+                    className="w-full h-full bg-repeat"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20L0 20z' fill='${encodeURIComponent(
+                        colors.royalGreen
+                      )}' fill-opacity='0.2'/%3E%3C/svg%3E")`,
+                    }}
+                  />
+                </div>
+              </div>
+              <div className=" mx-auto px-6 relative z-10">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="text-center mb-16"
+                >
+                  <motion.h2
+                    className="text-4xl md:text-5xl font-bold mb-6"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: colors.royalGreen,
+                      position: "relative",
+                      display: "inline-block",
+                    }}
+                  >
+                    Why Silver Petals
+                    <motion.div
+                      className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-current mt-4"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3, duration: 0.8 }}
+                    />
+                  </motion.h2>
+                  <motion.p
+                    className="text-xl max-w-3xl mx-auto"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    style={{ color: colors.black }}
+                  >
+                    Your dream celebration deserves the perfect setting. Discover what makes us the ideal choice for your special day.
+                  </motion.p>
+                </motion.div>
+                <div className="flex flex-col lg:flex-row gap-10 items-center justify-between">
+                  <div className="w-full lg:w-7/12 relative">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {whySilverItems.map((item, index) => (
+                        <motion.div
+                          key={index}
+                          className="bg-white rounded-2xl border p-8 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden"
+                          style={{
+                            borderColor: colors.royalGreen + "20",
+                            background: `linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%)`,
+                          }}
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: index * 0.1 }}
+                          whileHover={{ y: -10 }}
+                        >
+                          <div className="flex items-start mb-4">
+                            <div
+                              className="text-4xl mr-4 transition-colors duration-300 group-hover:text-rose-500"
+                              style={{ color: colors.royalGreen }}
+                            >
+                              {item.icon}
+                            </div>
+                            <h3
+                              className="text-xl font-bold mt-1"
+                              style={{
+                                fontFamily: "'Cinzel', serif",
+                                color: colors.royalGreen,
+                              }}
+                            >
+                              {item.title}
+                            </h3>
+                          </div>
+                          <p className="text-base" style={{ color: colors.black }}>
+                            {item.desc}
+                          </p>
+                          <div className="absolute bottom-0 right-0 w-16 h-16 overflow-hidden">
+                            <div
+                              className="absolute bottom-0 right-0 w-16 h-16 transform rotate-45 translate-y-1/2"
+                              style={{ backgroundColor: colors.royalGreen + "10" }}
+                            />
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                  <motion.div
+                    className="w-full lg:w-5/12 relative rounded-2xl overflow-hidden"
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+                      <div
+                        className="absolute inset-0 z-10"
+                        style={{
+                          background: `linear-gradient(to top, ${colors.royalGreen}70, ${colors.cream}30)`,
+                        }}
+                      />
+                      <div
+                        className="w-full h-full bg-cover bg-center"
+                        style={{
+                          backgroundImage: `url('/person3.jpg')`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      />
+                      <motion.div
+                        className="absolute bottom-8 left-8 bg-white p-6 rounded-xl shadow-lg max-w-xs"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.6, duration: 0.5 }}
+                      >
+                        <div className="flex items-center mb-3">
+                          <div
+                            className="w-10 h-10 rounded-full flex items-center justify-center text-white mr-3"
+                            style={{ backgroundColor: colors.royalGreen }}
+                          >
+                            <span className="text-xl font-serif">"</span>
+                          </div>
+                          <div>
+                            <p className="font-bold" style={{ color: colors.black }}>
+                              Emily & James
+                            </p>
+                            <p className="text-sm opacity-70" style={{ color: colors.black }}>
+                              June Wedding
+                            </p>
+                          </div>
+                        </div>
+                        <p className="text-sm italic" style={{ color: colors.black }}>
+                          "The perfect venue with attention to every detail. Our dream wedding came true!"
+                        </p>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </div>
+                <motion.div
+                  className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  {[
+                    { value: "200+", label: "Events Hosted" },
+                    { value: "98%", label: "Client Satisfaction" },
+                    { value: "15", label: "Years Experience" },
+                    { value: "50+", label: "Vendor Partners" },
+                  ].map((stat, index) => (
+                    <div key={index} className="text-center">
+                      <div
+                        className="text-5xl font-bold mb-2"
+                        style={{ color: colors.royalGreen }}
+                      >
+                        {stat.value}
+                      </div>
+                      <p className="text-lg font-medium" style={{ color: colors.black }}>
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+            </section>
     </div>
   );
 }

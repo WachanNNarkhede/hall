@@ -26,37 +26,22 @@ export default function Navbarr() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [openNestedDropdown, setOpenNestedDropdown] = useState(null);
 
-  const navItems = [
-    { name: "Home", link: "/home" },
-    { name: "About", link: "/about" },
-    {
-      name: "Services",
-      link: "/services",
-      dropdown: [
-        { name: "Birthday Party", link: "/services/birthday" },
-        { name: "Marriage", link: "/services/marriage" },
-        {
-          name: "Death Ceremonies",
-          link: "/services/death-ceremonies",
-          nested: [
-            { name: "10th Day", link: "/services/death-ceremonies/10th-day" },
-            { name: "13th Day", link: "/services/death-ceremonies/13th-day" },
-            { name: "Shraddh", link: "/services/death-ceremonies/shraddh" },
-          ],
-        },
-        { name: "Baby Mundan", link: "/services/baby-mundan" },
-        { name: "New Year Party", link: "/services/new-year" },
-        { name: "Holi Party", link: "/services/holi" },
-        { name: "Engagement", link: "/services/engagement" },
-        { name: "Anniversary", link: "/services/anniversary" },
-        { name: "Corporate Events", link: "/services/corporate" },
-        { name: "Kitty Party", link: "/services/kitty" },
-      ],
-    },
-    { name: "Gallery", link: "/gallery" },
-    { name: "Contact", link: "/contact" },
-  ];
-
+const navItems = [
+  { name: "Home", link: "/home" },
+  { name: "About", link: "/about" },
+  {
+    name: "Services",
+    link: "/",
+    dropdown: [
+      { name: "Birthday Party", link: "birthdayparty" },
+      { name: "Marriage", link: "marriage" },
+      { name: "Engagement", link: "engagement" },
+      { name: "Anniversary", link: "anniversary" },
+    ],
+  },
+  { name: "Gallery", link: "/gallery" },
+  { name: "Contact", link: "/contact" },
+];
   return (
     <div className="relative w-full">
       <Navbar className="fixed top-0 left-0 right-0 z-50" style={{ background: colors.darkNavy }}>
