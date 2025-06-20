@@ -1,7 +1,7 @@
 "use client";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { useInView } from "react-intersection-observer";
 
@@ -67,37 +67,38 @@ const whySilverItems = [
 ];
 
 // AnimatedCounter Component
-function AnimatedCounter({ target, duration = 1500 }) {
+
+function AnimatedCounter({ target, duration = 1 }) {
   const [count, setCount] = useState(0);
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3,
   });
 
+  const frame = useRef();
+  const start = useRef();
+  
   useEffect(() => {
     if (!inView) return;
 
     const end = parseInt(target, 10);
-    if (count === end) return;
+    const durationMs = duration * 1000;
 
-    let current = 0;
-    const timer = setInterval(() => {
-      if (current >= end) {
-        setCount(end);
-        clearInterval(timer);
-        return;
+    const animate = (timestamp) => {
+      if (!start.current) start.current = timestamp;
+      const progress = timestamp - start.current;
+      const value = Math.floor((progress / durationMs) * end);
+      setCount(value < end ? value : end);
+
+      if (progress < durationMs) {
+        frame.current = requestAnimationFrame(animate);
       }
-      const remaining = end - current;
-      const increment = Math.min(
-        remaining,
-        Math.max(50, Math.floor(remaining * (0.1 + Math.random() * 0.4)))
-      );
-      current += increment;
-      setCount(Math.min(current, end));
-    }, duration / 10);
+    };
 
-    return () => clearInterval(timer);
-  }, [inView, target, duration, count]);
+    frame.current = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(frame.current);
+  }, [inView, target, duration]);
 
   return <span ref={ref}>{count}</span>;
 }
@@ -729,7 +730,7 @@ export default function Home() {
                       background: `linear-gradient(to right, ${colors.royalGreen}, ${colors.gold})`,
                     }}
                   >
-                    <AnimatedCounter target={milestone.year} duration={1500} />
+                    <AnimatedCounter target={milestone.year} duration={1} />
                   </span>
                   <span className="text-3xl mb-4" style={{ color: colors.royalGreen }}>
                     {milestone.icon}
