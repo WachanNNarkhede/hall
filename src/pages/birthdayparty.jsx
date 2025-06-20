@@ -106,12 +106,12 @@ const BirthdayParty = ({ setCurrentPage }) => {
   ];
 
   const birthdayGallery = [
-    { src: "https://via.placeholder.com/400x300", alt: "Kids birthday party with colorful decorations" },
-    { src: "https://via.placeholder.com/400x300", alt: "Elegant adult birthday celebration" },
-    { src: "https://via.placeholder.com/400x300", alt: "Teen birthday party with modern setup" },
-    { src: "https://via.placeholder.com/400x300", alt: "Birthday cake cutting ceremony" },
-    { src: "https://via.placeholder.com/400x300", alt: "Birthday party entertainment" },
-    { src: "https://via.placeholder.com/400x300", alt: "Birthday party dining setup" },
+    { src: "https://lh3.googleusercontent.com/p/AF1QipPkjqtp9Jwioe1sQxiRVK2yEXdujLuCsD9cdr3c=s1360-w1360-h1020-rw", alt: "Kids birthday party with colorful decorations" },
+    { src: "https://lh3.googleusercontent.com/p/AF1QipMKY9iKptb1nSQDsmIC-A1W8tjEbx7PdLsscQDD=s1360-w1360-h1020-rw", alt: "Elegant adult birthday celebration" },
+    { src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npFLbqPdVclJpZiQzkLOfociJLytWLyIo71tZ-WRodRHqHKkLUbEUtKbs9Ml7l4ukyVvgVUzyPyJ99WgRFe2YAVpNiL1SYJFht8KnXn-wcqvO1QVxY0SUHQM5vWPWnjG5hgpGYv=s1360-w1360-h1020-rw", alt: "Teen birthday party with modern setup" },
+    { src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr1SX8xBf3QZReqXqJb0G48yVhlOO4fZ15ZQMXtsAMuQ0ZJj4rSk92BNhoWDlpcnNKIZO7G0vEKkjPasYUkpTWTuiEa_jCe8a9y9u5rBVEsJeHAULVAX3x8_tKjgewYDDwtb9RD=s1360-w1360-h1020-rw", alt: "Birthday cake cutting ceremony" },
+    { src: "https://lh3.googleusercontent.com/p/AF1QipP6w2PweIcuull-8puli14wM9Gnc78gs3fQX-k4=s1360-w1360-h1020-rw", alt: "Birthday party entertainment" },
+    { src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqHgh8kS_7CeLUkHQcLeqD3l4v0QtxpuJsGu-AH-zr9wf9KabXAyLYyXRaDQBZUJ6yqUA6eWXEyln46O_-WV6o-ZIKgTb8ASCuauBWv8VBfeD7gEfmbbW6MstVuOz9R07L3uJcpPKPSBltl=s1360-w1360-h1020-rw", alt: "Birthday party dining setup" },
   ];
 
   const handleNavClick = (page) => {
@@ -193,13 +193,22 @@ const BirthdayParty = ({ setCurrentPage }) => {
 
           {/* Hero Image */}
           <div className="relative max-w-4xl mx-auto">
-            <div
-              className="rounded-2xl overflow-hidden shadow-2xl h-96 bg-cover bg-center"
-              style={{
-                backgroundImage: "url('https://via.placeholder.com/800x400')",
-                border: `3px solid ${colors.gold}`,
-              }}
-            />
+           <div className="group relative h-[70svh] w-full rounded-2xl overflow-hidden shadow-2xl border-[3px]" style={{ borderColor: colors.gold }}>
+  <div
+    className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+    style={{
+      backgroundImage: "url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4noBmDv_Hj97S2uuVWhYRS6uTXRu4R8BXwalaMeobi8-f6E5EblNe75QWINzDI7qADK46BpqrCM5BwX53n_tWVbQIQ5LqJKlJkunMWd7AH1xy1m8A7i92K6yk1MTnnobpEolsAs=s1360-w1360-h1020-rw')",
+    }}
+  ></div>
+
+  <div
+    className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+    style={{
+      backgroundImage: "url('https://lh3.googleusercontent.com/p/AF1QipMKY9iKptb1nSQDsmIC-A1W8tjEbx7PdLsscQDD=s1360-w1360-h1020-rw')", // ← your hover image
+    }}
+  ></div>
+</div>
+
             <div
               className="absolute -bottom-6 -right-6 p-6 rounded-xl shadow-lg"
               style={{ backgroundColor: colors.gold, color: colors.black }}

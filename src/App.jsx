@@ -7,6 +7,8 @@ import Footer from "./assets/components/Footer";
 import Navbarr from "./assets/components/Navbar";
 import BirthdayParty from "./pages/birthdayparty";
 import Anniversary from "./pages/anniversary";
+import Marriage from "./pages/marrage";
+import Engagement from "./pages/engagement";
 export default function App() {
   return (
     <Router>
@@ -18,9 +20,9 @@ export default function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/birthdayparty" element={<BirthdayParty />} />
+        <Route path="/marriage" element={<Marriage />} />
         <Route path="/anniversary" element={<Anniversary />} />
-        <Route path="/birthdayparty" element={<BirthdayParty />} />
-        <Route path="/birthdayparty" element={<BirthdayParty />} />
+        <Route path="/engagement" element={<Engagement />} />
       </Routes>
       <Footer />
     </Router>

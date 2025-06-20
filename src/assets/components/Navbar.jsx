@@ -59,7 +59,8 @@ const navItems = [
               variant="primary"
               style={{ background: colors.gold, color: colors.darkNavy }}
             >
-              Book a Call
+             <a href="https://wa.me/919762302055?text=I%20would%20like%20to%20book%20a%20marriage%20lawn
+">Book a Call</a> 
             </NavbarButton>
           </div>
         </NavBody>
@@ -189,7 +190,8 @@ const navItems = [
                 className="w-full"
                 style={{ background: colors.gold, color: colors.darkNavy }}
               >
-                Book a Call
+                 <a href="https://wa.me/919762302055?text=I%20would%20like%20to%20book%20a%20marriage%20lawn
+">Book a Call</a> 
               </NavbarButton>
             </div>
           </MobileNavMenu>

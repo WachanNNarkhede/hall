@@ -118,6 +118,10 @@ export default function ContactUs() {
                 ></textarea>
               </div>
               <motion.button
+           onClick={() => {
+  window.location.assign("https://wa.me/919762302055?text=I%20would%20like%20to%20book%20a%20marriage%20lawn");
+}}
+
                 whileHover={{
                   scale: 1.03,
                   backgroundColor: colors.lightSage,
@@ -188,7 +192,7 @@ export default function ContactUs() {
                       Our Location
                     </h4>
                     <p style={{ color: colors.lightSage }}>
-                      123 Luxury Avenue, Elegant City, EC 12345
+                      SILVER PETALS HALL , DHAYRI PHATA,<br></br> Shivam Complex, Wadgaon Budruk, Narhe,<br></br> Pune, Maharashtra 411041
                     </p>
                   </div>
                 </motion.div>
@@ -209,7 +213,7 @@ export default function ContactUs() {
                     >
                       Phone
                     </h4>
-                    <p style={{ color: colors.lightSage }}>+1 (234) 567-8910</p>
+                    <p style={{ color: colors.lightSage }}>+91 97623 02055</p>
                   </div>
                 </motion.div>
                 <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4">
@@ -229,7 +233,7 @@ export default function ContactUs() {
                     >
                       Email
                     </h4>
-                    <p style={{ color: colors.lightSage }}>events@luxebanquet.com</p>
+                    <p style={{ color: colors.lightSage }}>events@silverpetalsbanquet.com</p>
                   </div>
                 </motion.div>
                 <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4">

@@ -111,27 +111,27 @@ const weddingCeremonies = [
   {
     name: "Engagement Ceremony",
     description: "Beautiful ring ceremony with traditional rituals and modern touches",
-    image: "/engagement-ceremony.jpg",
+    image: "https://lh3.googleusercontent.com/p/AF1QipMamsbyDNvfHJ3TEU0KKmx0OVmfElAC7PtvfgZf=s1360-w1360-h1020-rw",
   },
   {
     name: "Mehendi Ceremony",
     description: "Colorful mehendi celebration with music, dance, and traditional decorations",
-    image: "/mehendi-ceremony.jpg",
+    image: "https://lh3.googleusercontent.com/p/AF1QipNLL5Pd7sDQJEFrpRca130f4goQaZlh1Pg9VTDf=s1360-w1360-h1020-rw",
   },
   {
     name: "Sangam Ceremony",
     description: "Pre-wedding celebration bringing both families together in joy",
-    image: "/sangam-ceremony.jpg",
+    image: "https://lh3.googleusercontent.com/p/AF1QipN6ED55eaLM0-auroZdOBe8o_mJ9JRF5wi5VlhT=s1360-w1360-h1020-rw",
   },
   {
     name: "Wedding Ceremony",
     description: "Sacred wedding rituals in a beautifully decorated mandap setting",
-    image: "/wedding-ceremony.jpg",
+    image: "https://lh3.googleusercontent.com/p/AF1QipPHAKk11oOaGddJUX5VUeChlqxGIi2-tcpnNUbU=s1360-w1360-h1020-rw",
   },
   {
     name: "Reception Party",
     description: "Grand reception celebration with dinner, dance, and entertainment",
-    image: "/reception-party.jpg",
+    image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrPgPWJh0nECnwhg1ifwSkOisPZyCAQO040KyBlU2eVjWSXX_wgSHzFMaZ4bteXYgsnvn-jC1nspMzNczLKzpBKn2G1K6PafonVCncsy8Nv5VaV8YixXYZwENrLsssKT1Azi3Y-sA=s1360-w1360-h1020-rw",
   },
 ]
 
@@ -219,7 +219,7 @@ export default function Marriage() {
             <div
               className="rounded-2xl overflow-hidden shadow-2xl h-96 bg-cover bg-center"
               style={{
-                backgroundImage: "url('/wedding-hero.jpg')",
+                backgroundImage: "url('https://lh3.googleusercontent.com/p/AF1QipMamsbyDNvfHJ3TEU0KKmx0OVmfElAC7PtvfgZf=s1360-w1360-h1020-rw')",
                 border: `3px solid ${colors.gold}`,
               }}
             />

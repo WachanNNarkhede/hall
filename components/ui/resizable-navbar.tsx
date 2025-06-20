@@ -8,6 +8,7 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import React, { useRef, useState, ReactNode, ComponentPropsWithoutRef } from "react";
+import { BsFlower1 } from "react-icons/bs";
 
 // Define types for all components
 interface NavbarProps {
@@ -320,8 +321,8 @@ export const MobileNavToggle = ({
 export const NavbarLogo = () => {
   return (
     <a href="#" className="relative z-20 flex items-center space-x-2 px-2 py-1">
-      <img src="/crown.svg" alt="logo" width={35} height={35} />
-      <span className="text-2xl font-bold text-yellow-400">Luxe Banquet</span>
+      <BsFlower1   className="text-2xl text-yellow-400" />
+      <span className="text-2xl font-bold text-yellow-400">Silver Petals Banquet</span>
     </a>
   );
 };

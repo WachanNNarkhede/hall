@@ -98,25 +98,25 @@ const teamMembers = [
     name: "Eleanor Windsor",
     role: "Founder & CEO",
     desc: "Visionary leader with a passion for creating unforgettable events.",
-    img: "/team1.jpg",
+    img: "https://th.bing.com/th/id/OIP.G5g0WydXYCBRY44x3iq0FgHaHa?w=626&h=626&rs=1&pid=ImgDetMain&cb=idpwebp2&o=7&rm=3",
   },
   {
     name: "James Carter",
     role: "Event Director",
     desc: "Master planner ensuring every detail is executed flawlessly.",
-    img: "/team2.jpg",
+    img: "https://img.freepik.com/premium-photo/full-body-portrait-young-cheerful-indian-man_1077802-58865.jpg",
   },
   {
     name: "Sophie Laurent",
     role: "Head Chef",
     desc: "Culinary artist crafting exquisite menus tailored to your taste.",
-    img: "/team3.jpg",
+    img: "silverpetals.png",
   },
   {
     name: "Amelia Rose",
     role: "Design Lead",
     desc: "Creative genius transforming venues into stunning masterpieces.",
-    img: "/team4.jpg",
+    img: "https://img.freepik.com/premium-photo/ambitious-indian-entrepreneur-capturing-success-through-radiant-smile_983420-164466.jpg",
   },
 ];
 
@@ -207,7 +207,7 @@ export default function About() {
             className="relative"
           >
             <motion.img
-              src="/venue1.jpg"
+              src="silverpetals.png"
               alt="Silver Petals banquet hall"
               className="rounded-xl shadow-2xl w-full"
               whileHover={{ scale: 1.02 }}

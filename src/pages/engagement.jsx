@@ -1,7 +1,9 @@
 "use client"
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion"
-import { FaRing, FaCamera, FaMusic, FaFlower, FaGift, FaGlass } from "react-icons/fa"
+import { FaRing, FaCamera, FaMusic, FaGift, FaGlassCheers } from "react-icons/fa"
+
+import { BsFlower1 } from "react-icons/bs";
 import { colors, gradients, typography } from "../assets/components/theme-colors"
 
 const engagementPackages = [
@@ -68,7 +70,7 @@ const engagementServices = [
     description: "Beautiful ring exchange ceremony with traditional and modern elements",
   },
   {
-    icon: <FaFlower className="text-4xl" />,
+    icon: <BsFlower1 className="text-4xl" />,
     title: "Floral Design",
     description: "Stunning floral arrangements and bouquets for the perfect romantic ambiance",
   },
@@ -83,7 +85,7 @@ const engagementServices = [
     description: "Live music, DJ services, and entertainment for your engagement celebration",
   },
   {
-    icon: <FaGlass className="text-4xl" />,
+    icon: <FaGlassCheers className="text-4xl" />,
     title: "Catering",
     description: "Delicious catering options from cocktails to full dinner service",
   },
@@ -98,25 +100,25 @@ const engagementIdeas = [
   {
     title: "Garden Party Theme",
     description: "Outdoor engagement with natural beauty and floral arrangements",
-    image: "/engagement-garden.jpg",
+    image: "https://lh3.googleusercontent.com/p/AF1QipNsZstL5CuXH9QMzOxjSVf64y2YBOSEfaQ8Y457=s1360-w1360-h1020-rw",
     features: ["Outdoor setup", "Natural lighting", "Floral arches", "Garden ambiance"],
   },
   {
     title: "Royal Palace Theme",
     description: "Luxurious engagement with royal decorations and grandeur",
-    image: "/engagement-royal.jpg",
+    image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrbEdJ5xVFh8377XrQLrnjjV4GkiaFrP_Dgoh8Ane6SfEuu_6mTptFvNi_Fqru22ij6CVirmpZZhkNNRo7g9rsAgb5YstQagYcngCFytbX9oUwG9C6PLrh5iyGAdv--Qi6QRZJl1w=s1360-w1360-h1020-rw",
     features: ["Royal decorations", "Gold accents", "Luxury seating", "Grand entrance"],
   },
   {
     title: "Modern Chic Theme",
     description: "Contemporary engagement with sleek design and modern elements",
-    image: "/engagement-modern.jpg",
+    image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqYjjHshe691PrjguziPCpIPIaC1Fc7VWSF0Cd_v31k3HsfX71uz8-8ZlhQgpKhraJ0Lwo9B6M5Z7gJdG5u5_No-NLeEvzr9fzaFoOOYkb0GKXZQTkIqoEMGTTHStNwW9KhMsE7qg=s1360-w1360-h1020-rw",
     features: ["Modern decor", "LED lighting", "Minimalist design", "Chic ambiance"],
   },
   {
     title: "Traditional Theme",
     description: "Classic engagement with traditional decorations and customs",
-    image: "/engagement-traditional.jpg",
+    image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrPgPWJh0nECnwhg1ifwSkOisPZyCAQO040KyBlU2eVjWSXX_wgSHzFMaZ4bteXYgsnvn-jC1nspMzNczLKzpBKn2G1K6PafonVCncsy8Nv5VaV8YixXYZwENrLsssKT1Azi3Y-sA=s1360-w1360-h1020-rw",
     features: ["Traditional setup", "Cultural elements", "Classic decorations", "Ritual arrangements"],
   },
 ]
@@ -205,7 +207,7 @@ export default function Engagement() {
             <div
               className="rounded-2xl overflow-hidden shadow-2xl h-96 bg-cover bg-center"
               style={{
-                backgroundImage: "url('/engagement-hero.jpg')",
+                backgroundImage: "url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrPgPWJh0nECnwhg1ifwSkOisPZyCAQO040KyBlU2eVjWSXX_wgSHzFMaZ4bteXYgsnvn-jC1nspMzNczLKzpBKn2G1K6PafonVCncsy8Nv5VaV8YixXYZwENrLsssKT1Azi3Y-sA=s1360-w1360-h1020-rw')",
                 border: `3px solid ${colors.gold}`,
               }}
             />

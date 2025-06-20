@@ -1,7 +1,11 @@
 "use client"
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion"
-import { FaHeart, FaRing, FaGlass, FaMusic, FaCamera, FaFlower } from "react-icons/fa"
+import { FaHeart, FaRing, FaMusic, FaCamera } from "react-icons/fa"
+import { FaWineGlassAlt } from "react-icons/fa";
+
+import { BsFlower1 } from "react-icons/bs";
+
 import { colors, gradients, typography } from "../assets/components/theme-colors"
 
 const anniversaryPackages = [
@@ -62,7 +66,7 @@ const anniversaryServices = [
     description: "Create the perfect romantic atmosphere with elegant lighting, candles, and decor",
   },
   {
-    icon: <FaFlower className="text-4xl" />,
+    icon: <BsFlower1 className="text-4xl" />,
     title: "Floral Arrangements",
     description: "Beautiful flower arrangements and bouquets to celebrate your love story",
   },
@@ -77,7 +81,7 @@ const anniversaryServices = [
     description: "Professional photography and videography to preserve your special moments",
   },
   {
-    icon: <FaGlass className="text-4xl" />,
+    icon: <FaWineGlassAlt className="text-4xl" />,
     title: "Fine Dining",
     description: "Exquisite cuisine and premium beverages for an unforgettable dining experience",
   },
@@ -183,7 +187,7 @@ export default function Anniversary() {
             <div
               className="rounded-2xl overflow-hidden shadow-2xl h-96 bg-cover bg-center"
               style={{
-                backgroundImage: "url('/anniversary-hero.jpg')",
+                backgroundImage: "url('https://lh3.googleusercontent.com/p/AF1QipMamsbyDNvfHJ3TEU0KKmx0OVmfElAC7PtvfgZf=s1360-w1360-h1020-rw')",
                 border: `3px solid ${colors.gold}`,
               }}
             />

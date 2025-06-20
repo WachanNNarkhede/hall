@@ -163,7 +163,7 @@ export const MobileNavToggle = ({ isOpen, onClick }) => {
 export const NavbarLogo = () => {
   return (
     <a href="#" className="relative z-20 flex items-center space-x-2 px-2 py-1">
-      <span className="text-2xl font-bold text-yellow-400">Luxe Banquet</span>
+      <span className="text-2xl font-bold text-yellow-400">Silver Petals Banquet</span>
     </a>
   );
 };
@@ -218,7 +218,8 @@ export const NavbarDemo = () => {
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
             <NavbarButton variant="secondary">Login</NavbarButton>
-            <NavbarButton variant="primary">Book Now</NavbarButton>
+            <NavbarButton variant="primary"><a href="https://wa.me/919762302055?text=I%20would%20like%20to%20book%20a%20marriage%20lawn
+">Book a Call</a> </NavbarButton>
           </div>
         </NavBody>
 

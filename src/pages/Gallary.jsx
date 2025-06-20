@@ -5,14 +5,14 @@ import { FiChevronLeft, FiChevronRight, FiX, FiRotateCw } from "react-icons/fi";
 import Spline from "@splinetool/react-spline";
 
 const photos = [
-  { src: "hall22.jpg", alt: "Elegant wedding setup", category: "Weddings" },
-  { src: "team1.jpg", alt: "Corporate event", category: "Corporate" },
-  { src: "lawn.jpg", category: "Catering" },
-  { src: "phototwo.jpg", category: "Weddings" },
-  { src: "parties.jpg", category: "Parties" },
-  { src: "phototwo.jpg", category: "Decor" },
-  { src: "shadi.jpg", category: "Weddings" },
-  { src: "cooprate.jpg", category: "Corporate" },
+  { src: "https://lh3.googleusercontent.com/p/AF1QipNsZstL5CuXH9QMzOxjSVf64y2YBOSEfaQ8Y457=s1360-w1360-h1020-rw", alt: "Elegant wedding setup", category: "Weddings" },
+  { src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noBmDv_Hj97S2uuVWhYRS6uTXRu4R8BXwalaMeobi8-f6E5EblNe75QWINzDI7qADK46BpqrCM5BwX53n_tWVbQIQ5LqJKlJkunMWd7AH1xy1m8A7i92K6yk1MTnnobpEolsAs=s1360-w1360-h1020-rw", alt: "Corporate event", category: "Corporate" },
+  { src: "https://lh3.googleusercontent.com/p/AF1QipNg5Fw4S7q0IhRPNtoKc_oyA3cH-b90ZO84RG5Z=s1360-w1360-h1020-rw", category: "Catering" },
+  { src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrPgPWJh0nECnwhg1ifwSkOisPZyCAQO040KyBlU2eVjWSXX_wgSHzFMaZ4bteXYgsnvn-jC1nspMzNczLKzpBKn2G1K6PafonVCncsy8Nv5VaV8YixXYZwENrLsssKT1Azi3Y-sA=s1360-w1360-h1020-rw", category: "Weddings" },
+  { src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrVK6WS2w-7YlNc-iQ9rgt1LlBm9dcimEpSRM_0X5l1-xqiRko8PZOls9Dyur0wT8jODyqQk_caj-NlAlYBlux4QcqfCxpr3UP-zbJx4Qq1x-fFUT4vwPR2RX1Vs2N-5zwbEs0z=s1360-w1360-h1020-rw", category: "Parties" },
+  { src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrbEdJ5xVFh8377XrQLrnjjV4GkiaFrP_Dgoh8Ane6SfEuu_6mTptFvNi_Fqru22ij6CVirmpZZhkNNRo7g9rsAgb5YstQagYcngCFytbX9oUwG9C6PLrh5iyGAdv--Qi6QRZJl1w=s1360-w1360-h1020-rw", category: "Decor" },
+  { src: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqYjjHshe691PrjguziPCpIPIaC1Fc7VWSF0Cd_v31k3HsfX71uz8-8ZlhQgpKhraJ0Lwo9B6M5Z7gJdG5u5_No-NLeEvzr9fzaFoOOYkb0GKXZQTkIqoEMGTTHStNwW9KhMsE7qg=s1360-w1360-h1020-rw", category: "Weddings" },
+  { src: "https://lh3.googleusercontent.com/p/AF1QipP6w2PweIcuull-8puli14wM9Gnc78gs3fQX-k4=s1360-w1360-h1020-rw", category: "Corporate" },
 ];
 
 const colors = {
