@@ -9,6 +9,7 @@ import BirthdayParty from "./pages/birthdayparty";
 import Anniversary from "./pages/anniversary";
 import Marriage from "./pages/marrage";
 import Engagement from "./pages/engagement";
+import AllServices from "./pages/AllServices";
 export default function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/marriage" element={<Marriage />} />
         <Route path="/anniversary" element={<Anniversary />} />
         <Route path="/engagement" element={<Engagement />} />
+        <Route path="/allServices" element={<AllServices />} />
       </Routes>
       <Footer />
     </Router>

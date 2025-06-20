@@ -178,7 +178,10 @@ const BirthdayParty = ({ setCurrentPage }) => {
                 View Packages
               </a>
               <button
-                onClick={() => handleNavClick("contact")}
+                 onClick={() => {
+  window.location.assign("https://wa.me/919762302055?text=I%20would%20like%20to%20book%20a%20marriage%20lawn");
+}}
+
                 className="px-8 py-4 rounded-full font-bold text-lg border-2 shadow-lg transition-transform hover:scale-105"
                 style={{
                   backgroundColor: "transparent",
@@ -375,6 +378,10 @@ const BirthdayParty = ({ setCurrentPage }) => {
                 </ul>
 
                 <button
+              onClick={() => {
+  window.location.assign("https://wa.me/919762302055?text=I%20would%20like%20to%20book%20a%20marriage%20lawn");
+}}
+
                   className="w-full py-3 rounded-full font-bold text-lg transition-transform hover:scale-105"
                   style={{
                     backgroundColor: pkg.popular ? colors.gold : colors.royalGreen,

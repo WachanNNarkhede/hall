@@ -329,86 +329,7 @@ export default function About() {
           ))}
         </motion.div>
 
-        {/* Team Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-28"
-        >
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl font-bold mb-12 text-center relative"
-            style={{
-              color: colors.royalGreen,
-              fontFamily: "'Cinzel', serif",
-            }}
-          >
-            Meet Our Team
-            <motion.div
-              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-current mt-4"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-            />
-          </motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{
-                  y: -10,
-                  boxShadow: `0 10px 30px ${colors.lightGold}`,
-                }}
-                className="rounded-xl overflow-hidden bg-white border"
-                style={{
-                  borderColor: colors.gold,
-                }}
-                role="region"
-                aria-label={`Team member ${member.name}`}
-              >
-                <div className="relative h-64">
-                  <div
-                    className="w-full h-full bg-cover bg-center"
-                    style={{
-                      backgroundImage: `url('${member.img}')`,
-                    }}
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: `linear-gradient(to top, ${colors.black}50, transparent)`,
-                    }}
-                  />
-                </div>
-                <div className="p-6 text-center">
-                  <h4
-                    className="text-xl font-bold mb-2"
-                    style={{
-                      color: colors.royalGreen,
-                      fontFamily: "'Cinzel', serif",
-                    }}
-                  >
-                    {member.name}
-                  </h4>
-                  <p className="text-base font-medium mb-2" style={{ color: colors.gold }}>
-                    {member.role}
-                  </p>
-                  <p className="text-sm" style={{ color: colors.black }}>
-                    {member.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+   
 
         {/* Values Section */}
         <motion.div
@@ -658,7 +579,7 @@ export default function About() {
                   </motion.div>
                 </div>
                 <motion.div
-                  className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
+                  className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-20"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}

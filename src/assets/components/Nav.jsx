@@ -202,9 +202,10 @@ export const NavbarDemo = () => {
   const navItems = [
     { name: "Home", link: "home" },
     { name: "About", link: "about" },
-    { name: "Services", link: "services" },
+    { name: "Our Speciality", link: "services" },
     { name: "Gallery", link: "gallery" },
-    { name: "Contact", link: "contact" }
+    { name: "Contact", link: "contact" },
+    { name: "All Services", link: "allServices" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

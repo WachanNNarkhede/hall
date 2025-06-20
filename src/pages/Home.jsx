@@ -111,6 +111,7 @@ export default function Home() {
   const [galleryIndex, setGalleryIndex] = useState(0);
   const [isGalleryPaused, setIsGalleryPaused] = useState(false);
 
+
   const services = [
     {
       title: "Wedding Celebrations",
@@ -537,121 +538,123 @@ export default function Home() {
 
       {/* Services Section */}
       <section
-        className="relative py-20"
-        id="services"
-        style={{
-          background: `linear-gradient(135deg, ${colors.cream} 0%, ${colors.lightGold} 100%)`,
-          color: colors.black,
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold text-center mb-12"
-            style={{ fontFamily: "'Cinzel', serif", color: colors.royalGreen }}
+            className="relative py-20 "
+            id="services"
+            style={{
+              background: `linear-gradient(135deg, ${colors.cream} 0%, ${colors.lightGold} 100%)`,
+              color: colors.black,
+            }}
           >
-            Our Services
-          </motion.h2>
-          <div className="relative flex justify-center" style={{ perspective: "1000px" }}>
-            <div className="book w-full max-w-4xl h-[500px]">
-              <AnimatePresence initial={false}>
-                {services.map((service, index) => (
-                  <motion.div
-                    key={service.title}
-                    className="absolute w-full h-full"
-                    style={{
-                      transformOrigin: "left center",
-                      transformStyle: "preserve-3d",
-                      zIndex: services.length - Math.abs(index - currentPage),
-                    }}
-                    initial={{ rotateY: index > currentPage ? 90 : index < currentPage ? -180 : 0 }}
-                    animate={{
-                      rotateY: index > currentPage ? 90 : index < currentPage ? -180 : 0,
-                    }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                  >
-                    <div
-                      className="absolute w-full h-full bg-white shadow-2xl p-8 flex"
-                      style={{ backfaceVisibility: "hidden", border: `2px solid ${colors.gold}` }}
-                    >
-                      <div className="w-1/2 h-full">
+            <div className="max-w-7xl mx-auto px-6">
+              <motion.h2
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl md:text-5xl font-bold text-center mb-12"
+                style={{ fontFamily: "'Cinzel', serif", color: colors.royalGreen }}
+              >
+                Our Services
+              </motion.h2>
+              
+              
+              <div className="relative  mr-48 flex justify-center" style={{ perspective: "1000px" }}>
+                <div className="book w-full max-w-4xl h-[500px]">
+                  <AnimatePresence initial={false}>
+                    {services.map((service, index) => (
+                      <motion.div
+                        key={service.title}
+                        className="absolute w-full h-full"
+                        style={{
+                          transformOrigin: "left center",
+                          transformStyle: "preserve-3d",
+                          zIndex: services.length - Math.abs(index - currentPage),
+                        }}
+                        initial={{ rotateY: index > currentPage ? 90 : index < currentPage ? -180 : 0 }}
+                        animate={{
+                          rotateY: index > currentPage ? 90 : index < currentPage ? -180 : 0,
+                        }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                      >
                         <div
-                          className="w-full h-full bg-gray-200 rounded-lg"
-                          style={{
-                            backgroundImage: `url('${service.img}')`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                          }}
-                        />
-                      </div>
-                      <div className="w-1/2 p-6 flex flex-col justify-between">
-                        <div>
-                          <h3
-                            className="text-2xl font-bold mb-4"
-                            style={{ fontFamily: "'Cinzel', serif", color: colors.royalGreen }}
-                          >
-                            {service.title}
-                          </h3>
-                          <p className="text-lg mb-4" style={{ color: colors.black }}>
-                            {service.desc}
-                          </p>
-                        </div>
-                        <motion.a
-                          href="#gallery"
-                          whileHover={{ scale: 1.05 }}
-                          className="inline-block px-6 py-3 font-semibold rounded-lg"
-                          style={{ backgroundColor: colors.gold, color: colors.cream }}
-                          aria-label={`View details for ${service.title}`}
-                          tabIndex={0}
+                          className="absolute w-full h-full bg-white shadow-2xl p-8 flex"
+                          style={{ backfaceVisibility: "hidden", border: `2px solid ${colors.gold}` }}
                         >
-                          Detail Information
-                        </motion.a>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
+                          <div className="w-1/2 h-full">
+                            <div
+                              className="w-full h-full bg-gray-200 rounded-lg"
+                              style={{
+                                backgroundImage: `url('${service.img}')`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                              }}
+                            />
+                          </div>
+                          <div className="w-1/2 p-6 flex flex-col justify-between">
+                            <div>
+                              <h3
+                                className="text-2xl font-bold mb-4"
+                                style={{ fontFamily: "'Cinzel', serif", color: colors.royalGreen }}
+                              >
+                                {service.title}
+                              </h3>
+                              <p className="text-lg mb-4" style={{ color: colors.black }}>
+                                {service.desc}
+                              </p>
+                            </div>
+                            <motion.a
+                              href="#gallery"
+                              whileHover={{ scale: 1.05 }}
+                              className="inline-block px-6 py-3 font-semibold rounded-lg"
+                              style={{ backgroundColor: colors.gold, color: colors.cream }}
+                              aria-label={`View details for ${service.title}`}
+                              tabIndex={0}
+                            >
+                              Detail Information
+                            </motion.a>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+                </div>
+              </div>
+              <div className="flex justify-center gap-4 mt-8">
+                <motion.button
+                  onClick={flipBack}
+                  disabled={currentPage === 0}
+                  whileHover={{ scale: currentPage === 0 ? 1 : 1.05 }}
+                  whileTap={{ scale: currentPage === 0 ? 1 : 0.95 }}
+                  className="px-6 py-3 rounded-lg text-lg font-semibold"
+                  style={{
+                    backgroundColor: currentPage === 0 ? colors.black : colors.royalGreen,
+                    color: colors.cream,
+                    opacity: currentPage === 0 ? 0.5 : 1,
+                  }}
+                  aria-label="Previous Service Page"
+                  tabIndex={0}
+                >
+                  Previous Page
+                </motion.button>
+                <motion.button
+                  onClick={flipNext}
+                  disabled={currentPage === services.length - 1}
+                  whileHover={{ scale: currentPage === services.length - 1 ? 1 : 1.05 }}
+                  whileTap={{ scale: currentPage === services.length - 1 ? 1 : 0.95 }}
+                  className="px-6 py-3 rounded-lg text-lg font-semibold"
+                  style={{
+                    backgroundColor: currentPage === services.length - 1 ? colors.black : colors.royalGreen,
+                    color: colors.cream,
+                    opacity: currentPage === services.length - 1 ? 0.5 : 1,
+                  }}
+                  aria-label="Next Service Page"
+                  tabIndex={0}
+                >
+                  Next Page
+                </motion.button>
+              </div>
             </div>
-          </div>
-          <div className="flex justify-center gap-4 mt-8">
-            <motion.button
-              onClick={flipBack}
-              disabled={currentPage === 0}
-              whileHover={{ scale: currentPage === 0 ? 1 : 1.05 }}
-              whileTap={{ scale: currentPage === 0 ? 1 : 0.95 }}
-              className="px-6 py-3 rounded-lg text-lg font-semibold"
-              style={{
-                backgroundColor: currentPage === 0 ? colors.black : colors.royalGreen,
-                color: colors.cream,
-                opacity: currentPage === 0 ? 0.5 : 1,
-              }}
-              aria-label="Previous Service Page"
-              tabIndex={0}
-            >
-              Previous Page
-            </motion.button>
-            <motion.button
-              onClick={flipNext}
-              disabled={currentPage === services.length - 1}
-              whileHover={{ scale: currentPage === services.length - 1 ? 1 : 1.05 }}
-              whileTap={{ scale: currentPage === services.length - 1 ? 1 : 0.95 }}
-              className="px-6 py-3 rounded-lg text-lg font-semibold"
-              style={{
-                backgroundColor: currentPage === services.length - 1 ? colors.black : colors.royalGreen,
-                color: colors.cream,
-                opacity: currentPage === services.length - 1 ? 0.5 : 1,
-              }}
-              aria-label="Next Service Page"
-              tabIndex={0}
-            >
-              Next Page
-            </motion.button>
-          </div>
-        </div>
-      </section>
+          </section>
 
       {/* Milestones Section */}
       <section

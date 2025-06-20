@@ -457,6 +457,10 @@ export default function Engagement() {
                 </ul>
 
                 <motion.button
+                 onClick={() => {
+  window.location.assign("https://wa.me/919762302055?text=I%20would%20like%20to%20book%20a%20marriage%20lawn");
+}}
+
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full py-3 rounded-full font-bold text-lg"

@@ -30,7 +30,7 @@ const navItems = [
   { name: "Home", link: "/home" },
   { name: "About", link: "/about" },
   {
-    name: "Services",
+    name: "Our Speciality",
     link: "/",
     dropdown: [
       { name: "Birthday Party", link: "birthdayparty" },
@@ -41,9 +41,10 @@ const navItems = [
   },
   { name: "Gallery", link: "/gallery" },
   { name: "Contact", link: "/contact" },
+  { name: "All Services", link: "/allServices" },
 ];
   return (
-    <div className="relative w-full">
+    <div className="relative w-full ">
       <Navbar className="fixed top-0 left-0 right-0 z-50" style={{ background: colors.darkNavy }}>
         {/* Desktop Navigation */}
         <NavBody className="max-w-7xl mx-auto px-6">
